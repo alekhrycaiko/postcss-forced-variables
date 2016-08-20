@@ -9,9 +9,7 @@
 
 Setup:
 
-npm install postcss-forced-variables
-
-Ensure you have postcss-simple-vars or something similar installed. I don't include this as a dependency in node-modules since there are a number of options.
+Ensure you have postcss-simple-vars or something similar installed. I don't include this as a dependency in node-modules since there are a number of options. 
 
 Either:
 - Provide an array of rules (e.g. ['color', 'font-size'] ) and an object of variables (e.g.{$blue : '#fff',

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/alekhrycaiko/postcss-suggest-variables.svg?branch=master)](https://travis-ci.org/alekhrycaiko/postcss-suggest-variables)
+
 <h1> PostCSS Forced Variables </h1>
 
 <h3> Pre-reqs </h3>
@@ -9,7 +11,7 @@
 
 Setup:
 
-Ensure you have postcss-simple-vars or something similar installed. I don't include this as a dependency in node-modules since there are a number of options. 
+Ensure you have postcss-simple-vars or something similar installed. I don't include this as a dependency in node-modules since there are a number of options.
 
 Either:
 - Provide an array of rules (e.g. ['color', 'font-size'] ) and an object of variables (e.g.{$blue : '#fff',

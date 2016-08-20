@@ -1,0 +1,29 @@
+.colorRedShouldBeVariableWarning {
+  color : red;
+}
+
+.fontSizeShouldBeVariableWarning {
+  font-size: 16px;
+}
+.colorPurpleShouldBeVariableThereforeWarning {
+  color : #0560;
+}
+
+.colorShouldBeError {
+  color: black;
+}
+
+.fontSizeShouldBeError {
+  font-size: 24px
+}
+
+.colorRedIsVariableThereforeNoWarningOrError {
+  color : $red;
+}
+.colorPurpleIsVariableThereforeNoWarningOrError {
+  color : $purple;
+}
+
+.fontWeightShouldDonothing {
+  font-weight: 700;
+}

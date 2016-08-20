@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/alekhrycaiko/postcss-suggest-variables.svg?branch=master)](https://travis-ci.org/alekhrycaiko/postcss-suggest-variables)
 
-<h1> PostCSS Forced Variables </h1>
+<h1> PostCSS Suggest Variables </h1>
 
 <h3> Pre-reqs </h3>
 - Module assumes that you already incorporate a variables plugin into your PostCSS solution for pre-processing CSS.

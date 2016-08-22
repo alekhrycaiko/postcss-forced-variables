@@ -1,13 +1,21 @@
 {
   "name": "postcss-forced-variables",
   "version": "1.0.0",
-  "description": "plugin forces warnings when variables arent used on specific rules",
+  "description": "PostCSS plugin to force variable usage on specific rules",
   "main": "main.js",
   "scripts": {
     "test": "ava"
   },
-  "author": "Alek Hrycaiko",
-  "license": "ISC",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "postcss-forced-variables",
+    "variable-rules"
+  ],
+  "repository": "alekhrycaiko/postcss-forced-variables",
+  "author": "Alek Hrycaiko  <alekhrycaiko@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "ava": "^0.16.0",
     "gulp": "^3.9.1",

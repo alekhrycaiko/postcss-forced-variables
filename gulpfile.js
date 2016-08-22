@@ -1,6 +1,6 @@
 var postcss = require('gulp-postcss');
 var gulp = require('gulp');
-var suggestVariables = require('./main.js');
+var forcedVariables = require('./main.js');
 var testVariables = require('./variables');
 var ruleSet = require('./ruleset');
 // setup a number of local tasks for manual tests.
@@ -8,7 +8,7 @@ var ruleSet = require('./ruleset');
 gulp.task('success', function () {
 
     var processors = [
-        suggestVariables({ruleset: ruleSet(), variables : testVariables()})
+        forcedVariables({ruleset: ruleSet(), variables : testVariables()})
     ];
     return gulp.src('./test/pass-src/*.css')
         .pipe(postcss(processors))
@@ -18,7 +18,7 @@ gulp.task('success', function () {
 
 gulp.task('warn', function () {
     var processors = [
-        suggestVariables({ruleset: ruleSet(), variables : testVariables()})
+        forcedVariables({ruleset: ruleSet(), variables : testVariables()})
     ];
     return gulp.src('./test/warning-src/*.css')
         .pipe(postcss(processors))
@@ -29,7 +29,7 @@ gulp.task('warn', function () {
 gulp.task('error', function () {
 
     var processors = [
-        suggestVariables({ruleset: ruleSet(), variables : testVariables()})
+        forcedVariables({ruleset: ruleSet(), variables : testVariables()})
     ];
     return gulp.src('./test/error-src/*.css')
         .pipe(postcss(processors))

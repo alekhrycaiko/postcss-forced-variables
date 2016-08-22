@@ -20,8 +20,8 @@ function throwPostCSSError (decl) {
   throw decl.error('Error! Variable have been set to required for this rule');
 }
 
-module.exports = postcss.plugin('suggest-variables',
- function suggestVariables(options){
+module.exports = postcss.plugin('forced-variables',
+ function forcedVariables(options){
    var variables, ruleset;
    variables = {};
    ruleset = [];

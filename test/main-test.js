@@ -2,32 +2,35 @@ import test from 'ava';
 import postcss from 'postcss';
 import sinon from 'sinon';
 
-var forcedVariables = require('./../main.js');
+var suggestVariables = require('./../main.js');
 var testVariables = require('./../variables');
 var ruleSet = require('./../ruleset');
 
-function run() {
-  // input output
-  postcss(forcedVariables({ruleset : ruleSet(), variables : testVariables()}))
-        .process('.re-test { color: red;} .brgegeg {color : $purple;} .meep {font-size: 24px;}').css;
-};
-
-test.beforeEach(t=> {
-  t.context.warn = console.warn;
-  t.context.error = console.error;
-  console.warn = sinon.spy();
-  console.error = sinon.spy();
-})
-test.afterEach(t=> {
-  console.warn = t.context.warn;
-  console.error = t.context.error;
+test('add rules with no variable file and expect pass', t => {
+  t.pass(function() {
+    postcss(suggestVariables({ruleset : ['color']})).process('.re{ color: red; }').css;
+  });
 });
-
-test('run forcedVariables, expect warning log count', t => {
-  run();
-    t.true(console.warn.calledOnce);
+test('add rules with no variable file and expect pass', t => {
+  t.pass(function() {
+    postcss(suggestVariables({variables : {$white : '#fff'}})).process('.re{ color: $white; } .pe{color:#fff}').css;
+  });
 });
-test('run forcedVariables, expect error log count', t=> {
-  run();
-  t.true(console.error.calledOnce);
+test('run suggestVariables with no options', t => {
+  t.throws(function() {
+    postcss(suggestVariables(undefined)).process('.re{ color: red; }').css;
+  }, 'Please set variables and rule-set');
+});
+test('run suggestVariables and expect error', t=> {
+  t.throws(function () {
+    postcss(suggestVariables({ruleset:['color'], variables : {$red : 'red'} } ))
+    .process('.re { color: blue;}').css;
+  }, 'suggest-variables: <css input>:1:7: Error! Variable have been set to required for this rule');
+});
+test('run suggestVariables and expect warning', t=> {
+  postcss(suggestVariables({ruleset:['color', 'font-size'], variables : {$red : 'red', $large : '16px'} } ))
+  .process('.re { color:red; font-size:16px}')
+  .then(function (result) {
+    t.deepEqual(result.messages.length, 2, 'Expect two warnings');
+  })
 });

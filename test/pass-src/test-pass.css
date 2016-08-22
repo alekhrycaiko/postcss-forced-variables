@@ -1,0 +1,11 @@
+
+.colorRedIsVariableThereforeNoWarningOrError {
+  color : $red;
+}
+.colorPurpleIsVariableThereforeNoWarningOrError {
+  color : $purple;
+}
+
+.fontWeightShouldDonothing {
+  font-weight: 700;
+}

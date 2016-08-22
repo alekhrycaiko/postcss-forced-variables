@@ -3,8 +3,8 @@ module.exports = function ruleSet() {
   rules = [];
 
   rules = [
-      'color',
-      'font-size'
+      'font-size',
+      'color'
   ]
   return rules;
 }

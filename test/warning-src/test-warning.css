@@ -1,0 +1,10 @@
+.colorRedShouldBeVariableWarning {
+  color : red;
+}
+
+.fontSizeShouldBeVariableWarning {
+  font-size: 16px;
+}
+.colorPurpleShouldBeVariableThereforeWarning {
+  color : #0560;
+}

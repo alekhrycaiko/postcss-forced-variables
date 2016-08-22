@@ -1,17 +1,40 @@
 var postcss = require('gulp-postcss');
 var gulp = require('gulp');
-var forcedvariables = require('./main.js');
+var suggestVariables = require('./main.js');
 var testVariables = require('./variables');
 var ruleSet = require('./ruleset');
-gulp.task('css', function () {
+// setup a number of local tasks for manual tests.
+
+gulp.task('success', function () {
 
     var processors = [
-        forcedvariables({ruleset : ruleSet(), variables : testVariables()})
+        suggestVariables({ruleset: ruleSet(), variables : testVariables()})
     ];
-    return gulp.src('./src/*.css')
+    return gulp.src('./test/pass-src/*.css')
         .pipe(postcss(processors))
-        .pipe(gulp.dest('./dest'));
+        .pipe(gulp.dest('./test/dest'));
 });
 
 
-gulp.task('default', ['css']);
+gulp.task('warn', function () {
+    var processors = [
+        suggestVariables({ruleset: ruleSet(), variables : testVariables()})
+    ];
+    return gulp.src('./test/warning-src/*.css')
+        .pipe(postcss(processors))
+        .pipe(gulp.dest('./test/dest'));
+});
+
+
+gulp.task('error', function () {
+
+    var processors = [
+        suggestVariables({ruleset: ruleSet(), variables : testVariables()})
+    ];
+    return gulp.src('./test/error-src/*.css')
+        .pipe(postcss(processors))
+        .pipe(gulp.dest('./test/dest'));
+});
+
+
+gulp.task('default', ['success']);

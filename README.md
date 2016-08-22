@@ -36,3 +36,6 @@ variables : {
 }
 
 Setup is complete. Further details can be seen in gulp test examples.
+
+
+Feel free to e-mail me at alekhrycaiko@gmail.com with any suggestions or questions.

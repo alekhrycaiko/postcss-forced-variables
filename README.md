@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/alekhrycaiko/postcss-suggest-variables.svg?branch=master)](https://travis-ci.org/alekhrycaiko/postcss-suggest-variables)
+[![Build Status](https://travis-ci.org/alekhrycaiko/postcss-forced-variables.svg?branch=master)](https://travis-ci.org/alekhrycaiko/postcss-forced-variables)
 
 <h1> PostCSS Forced Variables </h1>
 

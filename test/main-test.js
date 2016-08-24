@@ -32,5 +32,5 @@ test('run forcedVariables and expect warning', t=> {
   .process('.re { color:red; font-size:16px}')
   .then(function (result) {
     t.deepEqual(result.messages.length, 2, 'Expect two warnings');
-  })
+  });
 });

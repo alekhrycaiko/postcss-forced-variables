@@ -1,18 +1,36 @@
 var postcss = require('postcss');
 
-function searchForEquivalentCSSValueInVariables(cssValue, decl, variableValues, result) {
-  var variableValMatch;
-  variableValMatch = variableValues.find(function findMatchingVariableValue(element, index) {
+function findCssValueMatchingVariable(variables, cssValue) {
+  var variableValues, result;
+  variableValues = [];
+  for (var key in variables){
+    variableValues.push(variables[key]);
+  }
+  result = variableValues.find(function findMatchingVariableValue(element, index) {
     return element === cssValue;
   });
-  if (variableValMatch !== undefined){
+  if (result !== undefined) {
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function searchForEquivalentCSSValueInVariables(cssValue, decl, variables, result, cssValueIsVariable) {
+  var cssMatchesVariableValue;
+  cssMatchesVariableValue = findCssValueMatchingVariable(variables, cssValue);
+  if (cssMatchesVariableValue){
     result.warn('Warning, a variable exists for ' + cssValue + ' at ' +
     'start line number: ' + decl.source.start.line +
     ', with key: ' + decl.prop + ' and value: ' + decl.value,
     {node : decl});
   }
-  else {
-    return false;
+  else if (!cssValueIsVariable){ // can i refactor this to be if / else?
+    throwPostCSSError(decl);
+  }
+  else{
+    return;
   }
 }
 
@@ -22,40 +40,33 @@ function throwPostCSSError (decl) {
 
 module.exports = postcss.plugin('forced-variables',
  function forcedVariables(options){
-   var variables, ruleset;
+   var variables, ruleset, dollarCheck;
    variables = {};
    ruleset = [];
-  options = options || undefined;
+   options = options || undefined;
    if (options === undefined) { throw new Error('Please set variables and rule-set');}
    if (options !== undefined) {
      variables = options.variables;
      ruleset = options.ruleset;
+     dollarCheck = new RegExp(/(\$)(.*?)/);
    }
    return function (css, result){
-      var variableValues, dollarCheck;
-     dollarCheck = new RegExp(/(\$)(.*?)/);
-     variableValues = [];
-     for (var key in variables){ variableValues.push(variables[key]);}
      const root = postcss.parse(css);
-     root.walkDecls(decl => {
-          var cssKey, cssValue, rulesMatch, variableValMatch;
-          cssKey = decl.prop;
-          cssValue = decl.value;
-          rulesMatch = ruleset.find(function findMatchingCSS(rulesetElement, rulesetIndex) {
-             return rulesetElement === cssKey;
-          });
-        if (rulesMatch) {
 
-          var keyIsVariable = dollarCheck.test(cssKey);
-          var valueIsVariable = dollarCheck.test(cssValue);
-          var out;
+     root.walkDecls(decl => {
+        var cssKey, cssValue, rulesMatch, variableValMatch, keyIsVariable, valueIsVariable, findCSSInVariables;
+        cssKey = decl.prop;
+        cssValue = decl.value;
+        rulesMatch = ruleset.find(function findMatchingCSS(rulesetElement, rulesetIndex) {
+            return rulesetElement === cssKey;
+        });
+        if (rulesMatch !== undefined) {
+          keyIsVariable = dollarCheck.test(cssKey);
+          valueIsVariable = dollarCheck.test(cssValue);
           if (!keyIsVariable){
-            out = searchForEquivalentCSSValueInVariables(cssValue, decl, variableValues, result);
-            if (out === false && !valueIsVariable) {
-              throwPostCSSError(decl);
-            }
+            searchForEquivalentCSSValueInVariables(cssValue, decl, variables, result,valueIsVariable);
           }
-          }
+        }
       });
     }
 });

@@ -27,6 +27,7 @@ body{
 }
 
 Setup:
+- Install: npm install postcss-forced-variables
 - In your processors, called forcedVariables() with the following object:
 ruleset : {
   // array of rules

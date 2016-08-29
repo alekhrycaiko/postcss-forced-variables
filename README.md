@@ -4,11 +4,13 @@
 
 <h2> Description </h2>
 
-The plugins purpose is to help enforce more consistent SASS-like variable usage in stylesheets.
+<p>The plugins purpose is to help enforce more consistent SASS-like variable usage in stylesheets.</p>
 
 <h3> Features </h3>
-Provides warnings when a variable from your variables file could've been used.
-Throws errors when specified properties do not have variables used.
+
+<p> Reads an array of CSS properties and provides warnings when these properties could be using pre-existing variables. </p>
+
+<p> Throws errors when CSS properties from the array do not use variables. </p>
 
 <h2> Setup: </h2>
 <h3> npm install postcss-forced-variables</h3>

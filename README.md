@@ -38,6 +38,10 @@ forcedVariables({ruleset : ['color', 'font-size'], variables : { $white : 'fff',
 // The following call will result in a Warning that the value #fff has a variable which can be used in the CSS.
 forcedVariables({ruleset : ['color'], variables : { $white : 'fff'});
 ```
+<h3> Example of console warning output:</h3>
+```
+forced-variables : <css input>: Warning! The value #fff has a variable that could be used here. 
+```
 <h2> Example of Error Generation </h2>
 ```css
 .body { 
@@ -48,7 +52,13 @@ forcedVariables({ruleset : ['color'], variables : { $white : 'fff'});
 // The following call will result in an Error being thrown that states a variable must be used in the CSS.
 forcedVariables({ruleset : ['color'], variables : { $white : 'fff'});
 ```
-
+<h3> Example of error output: </h3>
+```
+Error: forced-variables: <css input> Error! Variable have been set to required for this rule
+.body { 
+  color: #fff
+}
+```
 
 <h3>
 Feel free to e-mail me at alekhrycaiko@gmail.com with any suggestions or questions!

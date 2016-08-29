@@ -1,6 +1,6 @@
 {
   "name": "postcss-forced-variables",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PostCSS plugin to force variable usage on specific rules",
   "main": "main.js",
   "scripts": {

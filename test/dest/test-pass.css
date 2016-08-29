@@ -9,3 +9,11 @@
 .fontWeightShouldDonothing {
   font-weight: 700;
 }
+
+.borderShouldPassNoWarningsOrError {
+  border-width: $borderWidth;
+}
+
+.fontSizeIsVariable {
+  font-size: $largeFont
+}

@@ -4,7 +4,6 @@ var forcedVariables = require('./main.js');
 var testVariables = require('./variables');
 var ruleSet = require('./ruleset');
 // setup a number of local tasks for manual tests.
-
 gulp.task('success', function () {
 
     var processors = [

@@ -1,10 +1,13 @@
 .colorRedShouldBeVariableWarning {
-  color : red;
+  color : $red;
 }
-
-.fontSizeShouldBeVariableWarning {
+.Boo {
   font-size: 16px;
 }
-.colorPurpleShouldBeVariableThereforeWarning {
-  color : #0560;
+.c {
+  font-weight: 16px;
+}
+
+.shouldGenerateAWarningSinceVariableExists {
+  border-width: 5px 3px 5px 6px
 }

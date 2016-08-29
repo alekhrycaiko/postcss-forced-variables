@@ -7,7 +7,9 @@ module.exports = function variableList() {
     $purple: '#0560',
     $red: 'red',
     $green: 'green',
-    $yellow: '#444'
+    $yellow: '#444',
+    $blue : '16px',
+    $borderWidth : '5px 3px 5px 6px'
   }
   return out;
 }

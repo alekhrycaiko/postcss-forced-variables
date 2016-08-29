@@ -8,7 +8,7 @@ The plugins purpose is to help enforce more consistent SASS-like variable usage 
 
 <h3> Features </h3>
 Provides warnings when a variable from your variables file could've been used.
-Throws errors when specified rules do not have variables used.
+Throws errors when specified properties do not have variables used.
 
 <h2> Setup: </h2>
 <h3> npm install postcss-forced-variables</h3>

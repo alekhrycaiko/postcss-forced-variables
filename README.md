@@ -15,6 +15,7 @@
 <h2> Setup: </h2>
 <h3> npm install postcss-forced-variables</h3>
 <h3> Follow the format below: </h3>
+
 ```javascript
 // require in postcss-forced-variables
 var forcedVariables = require('postcss-forced-variables');
@@ -28,32 +29,43 @@ forcedVariables({ruleset : ['color', 'font-size'], variables : { $white : 'fff',
 ```
 
 <h2> Example of Warning Generation </h2>
-```css
+
+```javascript
+
 /* Consider the following CSS being processed */
 .body { 
   color: #fff;
 }
+
 ```
+
 ```javascript
 // The following call will result in a Warning that the value #fff has a variable which can be used in the CSS.
 forcedVariables({ruleset : ['color'], variables : { $white : 'fff'});
 ```
+
 <h3> Example of console warning output:</h3>
-```
+
+```javascript
 forced-variables : <css input>: Warning! The value #fff has a variable that could be used here. 
 ```
+
 <h2> Example of Error Generation </h2>
-```css
+
+```javascript
 .body { 
   color: #fff
 }
 ```
+
 ```javascript
 // The following call will result in an Error being thrown that states a variable must be used in the CSS.
 forcedVariables({ruleset : ['color'], variables : { $white : 'fff'});
 ```
+
 <h3> Example of error output: </h3>
-```
+
+```javascript
 Error: forced-variables: <css input> Error! Variable have been set to required for this rule
 .body { 
   color: #fff
